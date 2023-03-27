@@ -28,3 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     <img src="${nyancat}">
   `
 })
+
+// ----------------------------------
+// 3. 플러그인
+console.log(process.env.NODE_ENV); // 웹팩 mode 출력. 
+console.log(TWO);
+console.log(String);
+console.log(api.domain);
