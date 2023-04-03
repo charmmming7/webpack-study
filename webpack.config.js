@@ -5,7 +5,7 @@ const ChildProcess = require("child_process");
 const { DefinePlugin } = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
@@ -28,13 +28,13 @@ module.exports = {
   // },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader', // js -> cssom
-          'css-loader' // css -> js
-        ]
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader', // js -> cssom
+      //     'css-loader' // css -> js
+      //   ]
+      // },
       // {
       //   test: /\.(png|jpg|gif|svg)$/,
       //   loader: 'file-loader',
@@ -51,7 +51,16 @@ module.exports = {
           name: '[name].[ext]?[hash]',
           limit: 20000, // 20kb 미만이면 base64로 변환
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          process.env.NODE_ENV === "production"
+          ? MiniCssExtractPlugin.loader
+          : "style-loader",
+          "css-loader",
+        ]
+      },
     ]
   },
   // plugins: [
@@ -80,8 +89,9 @@ module.exports = {
       } : false
     }),
     new CleanWebpackPlugin(),
-    ...(process.env.NODE_ENV === 'production'
-      ? new MiniCssExtractPlugin({ filename: '[name].css' })
+    ...(
+      process.env.NODE_ENV === 'production'
+      ? [ new MiniCssExtractPlugin({ filename: '[name].css' }) ]
       : []
     )
   ]
