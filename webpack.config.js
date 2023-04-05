@@ -49,8 +49,18 @@ module.exports = {
             ? MiniCssExtractPlugin.loader // 프로덕션 환경
             : // 개발 환경
             "style-loader",
-            "css-loader",
-            "sass-loader",
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+              },
+            },
         ]
       },
       {
