@@ -2,7 +2,6 @@ const path = require("path");
 // const MyWebpackPlugin = require('./my-webpack-plugin');
 const webpack = require("webpack");
 const ChildProcess = require("child_process");
-const { DefinePlugin } = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
