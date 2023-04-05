@@ -43,13 +43,15 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(s[ac]ss|css)$/i,
         use: [
           process.env.NODE_ENV === "production"
-          ? MiniCssExtractPlugin.loader
-          : "style-loader",
-          "css-loader",
-        ],
+            ? MiniCssExtractPlugin.loader // 프로덕션 환경
+            : // 개발 환경
+            "style-loader",
+            "css-loader",
+            "sass-loader",
+        ]
       },
       {
         test: /\.js$/,

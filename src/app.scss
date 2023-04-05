@@ -1,0 +1,15 @@
+@import './scss/normalize.scss';
+@import './scss/variables.scss';
+
+body {
+  min-width: 320px; // iphone5
+  max-width: 768px; // tablet
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightblue;
+}
+
+.container {
+  margin-left: $span * 2;
+  margin-right: $span * 2;
+}
