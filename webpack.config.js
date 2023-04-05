@@ -9,22 +9,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: 'development',
   entry: {
-    main: './src/app.js' // 상대경로
+    main: './app.js' // 상대경로
   },
   output: {
     path: path.resolve('./dist'), // 절대경로를 해석해주는 node 모듈
-    filename: '[name].js' // 동적파일명
+    filename: '[name].js', // 동적파일명
+    // publicPath: '/',
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.js$/,
-  //       use: [
-  //         path.resolve('./my-webpack-loader.js')
-  //       ]
-  //     }
-  //   ]
-  // },
   module: {
     rules: [
       // {
@@ -58,13 +49,15 @@ module.exports = {
           ? MiniCssExtractPlugin.loader
           : "style-loader",
           "css-loader",
-        ]
+        ],
       },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
     ]
   },
-  // plugins: [
-  //   new MyWebpackPlugin()
-  // ]
   plugins: [
     new webpack.BannerPlugin({
       banner: `
