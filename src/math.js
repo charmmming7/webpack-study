@@ -21,8 +21,7 @@ var math = math || {}; // 전역 네임스페이스. math가 있으면 할당, �
 // 3-1. CommonJS 모듈방식
 // exports function sum(a, b) { return a + b; }
 
-
-// 3-2. ES2015에서 표준 모듈 시스템 
+// 3-2. ES2015에서 표준 모듈 시스템
 export function sum(a, b) {
-  return a + b
+  return a + b;
 }

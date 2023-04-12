@@ -1,6 +1,7 @@
-// import "./src/app.scss";
-
-// new Promise(); // es6 객체
+var foo = "";
 
 console.log();
-(function () { })();
+
+function aaa() {
+  console.log("ddd");
+}
