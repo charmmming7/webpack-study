@@ -1,7 +1,3 @@
-var foo = "";
+import "./src/app.scss";
 
-console.log();
-
-function aaa() {
-  console.log("ddd");
-}
+new Promise(() => {}); // es6 객체
