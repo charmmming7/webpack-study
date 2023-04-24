@@ -8,46 +8,38 @@
     "build": "webpack",
     "build2": "./node_modules/.bin/webpack",
     "show-help": "node_modules/.bin/webpack --help",
-    "lint": "eslint src --fix"
+    "lint": "eslint src --fix",
+    "start": "webpack-dev-server --open --progress"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/preset-env": "^7.21.4",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@webpack-cli/serve": "^2.0.1",
     "babel-loader": "^8.0.6",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "html-webpack-plugin": "^4.5.2",
-    "lint-staged": "^13.2.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "connect-api-mocker": "^1.10.0",
+    "core-js": "^2.6.11",
+    "css-loader": "^3.4.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.0",
+    "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.3",
     "sass": "^1.60.0",
     "sass-loader": "^8.0.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.10"
+    "style-loader": "^1.1.2",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-transform-arrow-functions": "^7.20.7",
-    "@babel/plugin-transform-block-scoping": "^7.21.0",
-    "@babel/plugin-transform-strict-mode": "^7.18.6",
-    "clean-webpack-plugin": "^4.0.0",
-    "core-js": "^2.6.12",
-    "css-loader": "^3.4.2",
-    "eslint-plugin-prettier": "^4.2.1",
-    "file-loader": "^5.0.2",
-    "husky": "^4.3.8",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.0",
-    "prettier": "^2.8.7",
-    "style-loader": "^1.1.3",
-    "url-loader": "^3.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "eslint app.js --fix"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix"
+    "axios": "^1.3.6"
   }
 }

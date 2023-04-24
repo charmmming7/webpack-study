@@ -1,3 +1,11 @@
-import "./src/app.scss";
+import axios from "axios";
 
-new Promise(() => {}); // es6 객체
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await axios.get('/api/users');
+
+  console.log(res);
+
+  document.body.innerHTML = (res.data || []).map(user => { 
+    return `<div>${user.id}: ${user.name}</div>`;
+  }).join("");
+});
