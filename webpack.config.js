@@ -5,6 +5,7 @@ const ChildProcess = require("child_process");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const apiMocker = require("connect-api-mocker");
 
 module.exports = {
   mode: "development",
@@ -19,22 +20,7 @@ module.exports = {
     overlay: true,
     stats: "errors-only",
     before: (app) => {
-      app.get("/api/users", (req, res) => {
-        res.json([
-          {
-            id: 1,
-            name: "Alice",
-          },
-          {
-            id: 2,
-            name: "Mike",
-          },
-          {
-            id: 3,
-            name: "Jane",
-          },
-        ]);
-      });
+      app.use(apiMocker("/api", "mocks/api"));
     },
   },
   module: {
