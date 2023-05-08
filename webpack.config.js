@@ -10,7 +10,7 @@ const apiMocker = require("connect-api-mocker");
 module.exports = {
   mode: "development",
   entry: {
-    main: "./app.js", // 상대경로
+    main: "./src/app.js", // 상대경로
   },
   output: {
     filename: "[name].js", // 동적파일명

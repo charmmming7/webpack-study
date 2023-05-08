@@ -9,7 +9,7 @@
     "build2": "./node_modules/.bin/webpack",
     "show-help": "node_modules/.bin/webpack --help",
     "lint": "eslint src --fix",
-    "start": "webpack-dev-server --open --progress"
+    "start": "webpack-dev-server --open --hot"
   },
   "author": "",
   "license": "ISC",
