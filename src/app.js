@@ -1,5 +1,5 @@
 import form from "./form";
-import result from "./result";
+// import result from "./result";
 import style from "./app.css";
 
 let resultEl;
@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   formEl.innerHTML = form.render();
   document.body.appendChild(formEl);
 
-  // import(/* webpackChunkName: "result" */ "./result.js").then(async (m) => {
-  //   const result = m.default;
-  //   resultEl = document.createElement("div");
-  //   resultEl.innerHTML = await result.render();
-  //   document.body.appendChild(resultEl);
-  // });
+  import(/* webpackChunkName: "result" */ "./result.js").then(async (m) => {
+    const result = m.default;
+    resultEl = document.createElement("div");
+    resultEl.innerHTML = await result.render();
+    document.body.appendChild(resultEl);
+  });
 
-  resultEl = document.createElement("div");
-  resultEl.innerHTML = await result.render();
-  document.body.appendChild(resultEl);
+  // resultEl = document.createElement("div");
+  // resultEl.innerHTML = await result.render();
+  // document.body.appendChild(resultEl);
 });
 
 if (module.hot) {
