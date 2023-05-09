@@ -1,3 +1,4 @@
+const mode = process.env.NODE_ENV || "development"; // 기본값을 development로 설정
 const path = require("path");
 // const MyWebpackPlugin = require('./my-webpack-plugin');
 const webpack = require("webpack");
@@ -6,11 +7,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const apiMocker = require("connect-api-mocker");
+const OptimizeCSSAssertsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode,
   entry: {
     main: "./src/app.js", // 상대경로
+    // result: "./src/result.js",
   },
   output: {
     filename: "[name].js", // 동적파일명
@@ -96,5 +101,33 @@ module.exports = {
     ...(process.env.NODE_ENV === "production"
       ? [new MiniCssExtractPlugin({ filename: "[name].css" })]
       : []),
+    new CopyPlugin([
+      {
+        from: "./node_modules/axios/dist/axios.min.js",
+        to: "./axios.min.js",
+      },
+    ]),
   ],
+  optimization: {
+    // production 모드면 압축 플러그인 사용
+    minimizer:
+      mode === "production"
+        ? [
+            new OptimizeCSSAssertsPlugin(),
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  drop_console: true, // 콘솔 로그를 제거한다
+                },
+              },
+            }),
+          ]
+        : [],
+    // splitChunks: {
+    //   chunks: "all",
+    // },
+  },
+  externals: {
+    axios: "axios",
+  },
 };
